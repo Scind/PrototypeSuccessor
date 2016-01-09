@@ -1449,8 +1449,6 @@ GameObject:
   - 92: {fileID: 1950305231}
   - 81: {fileID: 1950305230}
   - 114: {fileID: 1950305235}
-  - 114: {fileID: 1950305237}
-  - 114: {fileID: 1950305239}
   - 114: {fileID: 1950305238}
   - 114: {fileID: 1950305236}
   - 114: {fileID: 1950305240}
@@ -1541,7 +1539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 82654350}
   Offset: {x: 0, y: 10, z: -5.7}
-  SmoothingTimeMouse: 1.01
+  SmoothingTimeMouse: 0.87
   SmoothingTimeWalk: 0.5
 --- !u!114 &1950305236
 MonoBehaviour:
@@ -1569,27 +1567,13 @@ MonoBehaviour:
   shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
   shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
   shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
---- !u!114 &1950305237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1950305229}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb585036cb9cbe49ae9ef1f081583a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SmoothTime: 1
-  DesiredYPosition: 15
-  UnsmoothedMovement: 1
 --- !u!114 &1950305238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1950305229}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
@@ -1621,18 +1605,6 @@ MonoBehaviour:
   blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
   brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
     type: 3}
---- !u!114 &1950305239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1950305229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07a781cad112c75d0008dfa8d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: b6aa781cad112c75d0008dfa8d76c639, type: 3}
 --- !u!114 &1950305240
 MonoBehaviour:
   m_ObjectHideFlags: 0

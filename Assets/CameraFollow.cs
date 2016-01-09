@@ -1,56 +1,56 @@
 ﻿using UnityEngine;
 using System;
+using Assets.ExtensionMethods;
+using System.Collections;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour
+{
 
     // Use this for initialization
+    // Works best with <= 60 fps. 
     public Transform Player;
     public Vector3 Offset = new Vector3(0, 10f, -5.7f);
-    [Range(0,10)]
+    [Range(0, 10f)]
     public float SmoothingTimeMouse = 2f;
-    [Range(0,10)]
+    [Range(0, 10)]
     public float SmoothingTimeWalk = .5f;
-
-    const float a = 62f;
-    const float b = 38f;
+    
     Vector3 currentVelocity = Vector3.zero;
     Vector3 walkingVelocity = Vector3.zero;
     Vector3 lastMP;
 
-	void Start () {
+    void Start()
+    {
         //Frame the player
-        //Cursor.lockState = CursorLockMode.Locked;
-        transform.position = Player.position + Offset;
-        lastMP = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
-        Cursor.lockState = CursorLockMode.Locked;
-        Invoke( "unlock", 1f); // This has to be done due to a bug in Unity with delta time. 
-	}
+        transform.position = Player.position + Offset; // Initial Offset;
+        lastMP = new Vector3(Screen.width / 2f, Screen.height / 2f, 0); // Set the first mouse Position to the middle of the screen.
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor in the mid;
+        Invoke("unlock", 1f);
+    }
 
-    // Update is called once per frame
-    // Has to be optimized!!
+    // Has to be optimized!! For now I let it run in FixedUpdate because we can't afford to lose mouse_deltas. Things get buggy.
+    void FixedUpdate()
+    {
+        Vector3 inputMousePos = Input.mousePosition;
+        Vector3 mouseDelta = (inputMousePos - lastMP); // Get the delta
+        float helper = mouseDelta.y;
+        mouseDelta.y = mouseDelta.z;
+        mouseDelta.z = helper; // Change the z and the y axis.
+        //Offset += Vector3.SmoothDamp(Vector3.zero, mouseDelta, ref currentVelocity, SmoothingTimeMouse);
+
+        Offset += Vector3.Lerp(Vector3.zero, mouseDelta, SmoothingTimeMouse*Time.fixedDeltaTime);
+        lastMP = Input.mousePosition;
+    }
+
     void LateUpdate()
     {
-
-        Vector3 inputMousePos = Input.mousePosition;
-        Vector3 move_to = (inputMousePos - lastMP);
-        float helper = move_to.y;
-        move_to.y = move_to.z;
-        move_to.z = helper;
-        move_to += transform.position;
-
-
-        Offset += Vector3.SmoothDamp(transform.position, move_to, ref currentVelocity, SmoothingTimeMouse) - transform.position;
-        transform.position = Vector3.SmoothDamp(transform.position,Player.position + Offset, ref walkingVelocity, SmoothingTimeWalk);
-
-
-        lastMP = Input.mousePosition;
+       transform.position = Vector3.SmoothDamp(transform.position, Player.position + Offset, ref walkingVelocity, SmoothingTimeWalk);
     }
 
     void unlock()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
     }
 }
 
