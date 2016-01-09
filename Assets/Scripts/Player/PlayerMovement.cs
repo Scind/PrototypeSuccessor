@@ -15,6 +15,7 @@ public static class MouseButton
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -41,12 +42,16 @@ public class PlayerMovement : MonoBehaviour
     float sqrBreakRange { get { return BreakRange * BreakRange; } }
     public bool Walking { get { return walking; } }
 
+    Rigidbody rb;
+
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
         anim = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
         destination = transform.position;
+        rb = GetComponent<Rigidbody>();
+        rb.detectCollisions = false;
     }
 
     void Update()
