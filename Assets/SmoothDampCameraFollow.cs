@@ -3,7 +3,7 @@ using System;
 using Assets.ExtensionMethods;
 using System.Collections;
 
-public class CameraFollow : MonoBehaviour
+public class SmoothDampCameraFollow : MonoBehaviour
 {
 
     // Use this for initialization
@@ -11,11 +11,10 @@ public class CameraFollow : MonoBehaviour
     public Transform Player;
     public Vector3 Offset = new Vector3(0, 10f, -5.7f);
     [Range(0, 10f)]
-    public float SmoothingTimeMouse = 2f;
+    public float SmoothingTimeMouse = 1.2f;
     [Range(0, 10)]
     public float SmoothingTimeWalk = .5f;
     
-    Vector3 currentVelocity = Vector3.zero;
     Vector3 walkingVelocity = Vector3.zero;
     Vector3 lastMP;
 
@@ -36,7 +35,6 @@ public class CameraFollow : MonoBehaviour
         float helper = mouseDelta.y;
         mouseDelta.y = mouseDelta.z;
         mouseDelta.z = helper; // Change the z and the y axis.
-        //Offset += Vector3.SmoothDamp(Vector3.zero, mouseDelta, ref currentVelocity, SmoothingTimeMouse);
 
         Offset += Vector3.Lerp(Vector3.zero, mouseDelta, SmoothingTimeMouse*Time.fixedDeltaTime);
         lastMP = Input.mousePosition;
@@ -52,5 +50,6 @@ public class CameraFollow : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
 }
 

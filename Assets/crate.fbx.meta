@@ -1,38 +1,22 @@
 fileFormatVersion: 2
-guid: 2e2c3b78c41dff34daf5fd84640322ef
-timeCreated: 1450905153
+guid: 9f88329f7b8842f4393130697f5ae729
+timeCreated: 1452555658
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cube
-    100004: Cube_001
-    100006: Cube_002
-    100008: Cube_003
-    100010: Cube_004
+    100002: Kratten
+    100004: OnderzoeksKamer
+    100006: polySurface1
     400000: //RootNode
-    400002: Cube
-    400004: Cube_001
-    400006: Cube_002
-    400008: Cube_003
-    400010: Cube_004
-    2300000: Cube
-    2300002: Cube_001
-    2300004: Cube_002
-    2300006: Cube_003
-    2300008: Cube_004
-    3300000: Cube
-    3300002: Cube_001
-    3300004: Cube_002
-    3300006: Cube_003
-    3300008: Cube_004
-    4300000: Cube_003
-    4300002: Cube_001
-    4300004: Cube
-    4300006: Cube_002
-    4300008: Cube_004
-    7400000: Default Take
+    400002: Kratten
+    400004: OnderzoeksKamer
+    400006: polySurface1
+    2300000: polySurface1
+    3300000: polySurface1
+    4300000: polySurface1
+    6400000: polySurface1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -60,7 +44,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
