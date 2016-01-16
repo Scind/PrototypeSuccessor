@@ -37,7 +37,6 @@ namespace Spellsystem
         public override void Kill()
         {
             RaiseSpellExpired();
-            DeathVisuals();
             Destroy(this.gameObject);
         }
 
@@ -48,7 +47,6 @@ namespace Spellsystem
 
         public void StartVisuals()
         {
-            
         }
     }
 }
