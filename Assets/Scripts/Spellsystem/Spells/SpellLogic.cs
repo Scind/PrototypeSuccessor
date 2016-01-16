@@ -45,8 +45,8 @@ namespace Spellsystem
         protected virtual void Awake()
         {
             Invoke("Kill", LifetimeInSeconds);
-            Player.ElementInput ei = FindObjectOfType<Player.ElementInput>();
-            transform.position = new Vector3(20, 12, -48); 
+            transform.position = StaffTransform.position;
+            transform.rotation = StaffTransform.rotation; 
 
         }
 

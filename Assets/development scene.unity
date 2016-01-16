@@ -250,6 +250,44 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0.22, y: 0.65, z: -0.1}
+--- !u!114 &453393200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453393195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456eec0673c0a6c4cbd0400d1799ffda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxChargeTime: 10
+  MaxRamp: 10
+  RampStep: 1
+  RampInterval: 1
+--- !u!114 &453393201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453393195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cea4dfd3ff4e4f45b0da22f086b99f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StaffPosition: {fileID: 1805684045}
+--- !u!114 &453393202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453393195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca484eb2d0d472144b507faf2d6c5750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!117 &758207743
 Texture3D:
   m_ObjectHideFlags: 0
@@ -706,6 +744,10 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: b61f0d8d8244b4b28aa66b0c8cb46a8d, type: 3}
   converted3DLut: {fileID: 758207743}
   basedOnTempTex: Assets/Standard Assets/Effects/ImageEffects/Textures/ContrastEnhanced3D16.png
+--- !u!4 &1805684045 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400006, guid: f1d84cc28597f5641a3d9cbc4df7e306, type: 3}
+  m_PrefabInternal: {fileID: 290052810}
 --- !u!1 &1945135588
 GameObject:
   m_ObjectHideFlags: 0

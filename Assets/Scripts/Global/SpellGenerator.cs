@@ -91,7 +91,7 @@ namespace Player
         /// <param name="self">Selfcast?</param>
         /// <returns>The generated spell containing all necessary information</returns>
         /// Compexity: O(1) 
-        public SpellLogic GenerateSpell(List<Element> elements, bool selfcast)
+        public SpellLogic GenerateSpell(List<Element> elements, bool selfcast, Transform staff)
         {
             elements.Sort();
             int n = elements.Count;
@@ -105,6 +105,7 @@ namespace Player
 
             sl = Instantiate(spellbook[name.ToString()]);
             sl.SetElements(elements); // we might need to copy that when shared amongst players.
+            sl.StaffTransform = staff;
             RaiseNewSpellGenerated(sl);
             return sl;
 

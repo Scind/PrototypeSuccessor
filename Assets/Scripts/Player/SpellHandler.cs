@@ -44,12 +44,7 @@ namespace Player
         /// <param name="sl">the generated spell</param>
         /// 
 
-        void Awake()
-        {
-            SpellGenerator.Instance.SpellGenerated += newSpellGenerated;
-        }
-
-        void newSpellGenerated(SpellLogic sl)
+        public void OnSpellGenerated(SpellLogic sl)
         {
             currentSpell = sl;
             if (sl.Spelltype == SpellType.Charged)

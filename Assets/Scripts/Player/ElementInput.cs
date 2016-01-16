@@ -12,6 +12,9 @@ namespace Player
         SpellHandler handler;
         SpellLogic currentSpell;
 
+        [Tooltip("Assign the Bone/Position of the starting point of a Spell")]
+        public Transform StaffPosition;
+
         void Awake()
         {
             stack = GetComponent<ElementStack>();
@@ -67,13 +70,16 @@ namespace Player
             {
                 if (Input.GetMouseButtonDown(1))
                 {
-                    currentSpell = SpellGenerator.Instance.GenerateSpell(stack.GetStack(), false);
+                    currentSpell = SpellGenerator.Instance.GenerateSpell(stack.GetStack(), false, StaffPosition);
+                    handler.OnSpellGenerated(currentSpell);
                     stack.PopAll();
                 }
 
                 else if (Input.GetMouseButtonDown(2))
                 {
-                    currentSpell = SpellGenerator.Instance.GenerateSpell(stack.GetStack(), true);
+                    
+                    currentSpell = SpellGenerator.Instance.GenerateSpell(stack.GetStack(), true, StaffPosition);
+                    handler.OnSpellGenerated(currentSpell);
                     stack.PopAll();
                 }
             }

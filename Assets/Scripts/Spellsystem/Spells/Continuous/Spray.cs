@@ -14,8 +14,9 @@ namespace Spellsystem
 
     public sealed class Spray : SpellLogic, VFXHandler
     {
+        public float KillVisualsAfter;
 
-        ParticleSystem ps;
+        IVisual particleSystemAnchor;
         public override SpellForm Spellform
         {
             get
@@ -44,7 +45,7 @@ namespace Spellsystem
         {
             // Wanna add some visual effects here? Call DeathVisuals(). Be sure to implement it first.
             RaiseSpellExpired();
-            Destroy(ps);
+            particleSystemAnchor.KillVisuals(KillVisualsAfter, true);
             Destroy(this.gameObject);
         }
 
@@ -56,8 +57,9 @@ namespace Spellsystem
 
         public void StartVisuals()
         { 
-            ps = Instantiate(VFXPool.Instance.Sprays[SpellInformation.Elements[0].ToString()], transform.position, transform.rotation) as ParticleSystem;
-            ps.transform.SetParent(transform);
+            ParticleSystem ps = Instantiate(VFXPool.Instance.Sprays[SpellInformation.Elements[0].ToString()], StaffTransform.position, StaffTransform.rotation) as ParticleSystem;
+            ps.transform.SetParent(StaffTransform);
+            particleSystemAnchor = ps.GetComponent<IVisual>();
         }
     }
 }
