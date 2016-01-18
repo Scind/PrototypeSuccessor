@@ -68,7 +68,7 @@ namespace Spellsystem
 
         public void ApplyDamage(GameObject gobject)
         {
-            IDamageable damageReceiver = gobject.GetComponent(typeof(IDamageable)) as IDamageable;
+            ISpellInteraction damageReceiver = gobject.GetComponent(typeof(ISpellInteraction)) as ISpellInteraction;
             if (damageReceiver != null)
             {
                 damageReceiver.RecvDamage(SpellInformation);
@@ -95,7 +95,7 @@ namespace Spellsystem
         /// <param name="gobject"> The object that should recv the effect</param>
         public void ApplyEffect(GameObject gobject)
         {
-            IStatusEffect effectReceiver = gobject.GetComponent(typeof(IStatusEffect)) as IStatusEffect;
+            ISpellInteraction effectReceiver = gobject.GetComponent(typeof(ISpellInteraction)) as ISpellInteraction;
             if(effectReceiver != null) effectReceiver.RecvEffect(SpellInformation);
         }
 

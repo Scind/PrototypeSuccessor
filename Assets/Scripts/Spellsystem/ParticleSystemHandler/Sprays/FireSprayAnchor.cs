@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+using Spellsystem;
 
 [RequireComponent(typeof(ParticleSystem))]
 public class FireSprayAnchor : MonoBehaviour, IVisual {
 
     ParticleSystem ps;
-
-    public event ParticleCollisionEventHandler ParticlesCollided;
+    SpellInformation spellInformation;
+    bool authorized = false;
 
     public void Awake()
     {
@@ -28,9 +28,31 @@ public class FireSprayAnchor : MonoBehaviour, IVisual {
 
     public void OnParticleCollision(GameObject other)
     {
-        if(ParticlesCollided != null)
+        if(authorized)
         {
-            ParticlesCollided(other);
+            ApplyAll(other);
+            authorized = false;
         }
+    }
+
+    public void AuthorizeCollisionDetection(ref SpellInformation spellInformation)
+    {
+        this.spellInformation = spellInformation;
+        InvokeRepeating("setAuthorized", 0, 1);
+    }
+
+    public void ApplyAll(GameObject gobject)
+    {
+        ISpellInteraction effectReceiver = gobject.GetComponent(typeof(ISpellInteraction)) as ISpellInteraction; 
+        if (effectReceiver != null)
+        {
+            effectReceiver.RecvEffect(spellInformation);
+            effectReceiver.RecvDamage(spellInformation);
+        }
+    }
+
+    public void setAuthorized()
+    {
+        authorized = true;
     }
 }
