@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Spellsystem
@@ -55,11 +56,13 @@ namespace Spellsystem
         }
 
 
+
         public void StartVisuals()
         { 
             ParticleSystem ps = Instantiate(VFXPool.Instance.Sprays[SpellInformation.Elements[0].ToString()], StaffTransform.position, StaffTransform.rotation) as ParticleSystem;
             ps.transform.SetParent(StaffTransform);
             particleSystemAnchor = ps.GetComponent<IVisual>();
+            particleSystemAnchor.AuthorizeCollisionDetection(ref SpellInformation);
         }
     }
 }

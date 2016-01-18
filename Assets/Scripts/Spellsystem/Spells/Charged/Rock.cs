@@ -47,6 +47,12 @@ namespace Spellsystem
 
         public void StartVisuals()
         {
+
+        }
+
+        public void OnCollisionEnter(Collision c)
+        {
+            ApplyDamage(c.gameObject);
         }
     }
 }
