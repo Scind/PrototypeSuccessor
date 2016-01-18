@@ -8,6 +8,8 @@ public class FireSprayAnchor : MonoBehaviour, IVisual {
 
     ParticleSystem ps;
 
+    public event ParticleCollisionEventHandler ParticlesCollided;
+
     public void Awake()
     {
         ps = GetComponent<ParticleSystem>();
@@ -22,5 +24,13 @@ public class FireSprayAnchor : MonoBehaviour, IVisual {
     public void SetParentTransform(Transform transform)
     {
         this.transform.SetParent(transform);
+    }
+
+    public void OnParticleCollision(GameObject other)
+    {
+        if(ParticlesCollided != null)
+        {
+            ParticlesCollided(other);
+        }
     }
 }

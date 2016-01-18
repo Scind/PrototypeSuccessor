@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Spellsystem
@@ -54,12 +55,23 @@ namespace Spellsystem
             // No death visuals here.
         }
 
+        IEnumerator damageTick()
+        {
+            
+            while(true)
+            {
+                yield return new WaitForSeconds(0.5f);
+                
+            }
+        }
+
 
         public void StartVisuals()
         { 
             ParticleSystem ps = Instantiate(VFXPool.Instance.Sprays[SpellInformation.Elements[0].ToString()], StaffTransform.position, StaffTransform.rotation) as ParticleSystem;
             ps.transform.SetParent(StaffTransform);
             particleSystemAnchor = ps.GetComponent<IVisual>();
+            StartCoroutine("damageTick");
         }
     }
 }

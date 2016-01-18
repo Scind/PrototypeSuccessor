@@ -96,7 +96,7 @@ namespace Spellsystem
         public void ApplyEffect(GameObject gobject)
         {
             IStatusEffect effectReceiver = gobject.GetComponent(typeof(IStatusEffect)) as IStatusEffect;
-            effectReceiver.RecvEffect(SpellInformation);
+            if(effectReceiver != null) effectReceiver.RecvEffect(SpellInformation);
         }
 
 
